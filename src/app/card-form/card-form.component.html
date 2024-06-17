@@ -1,0 +1,30 @@
+<p>card-form works!</p>
+
+<div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <label>
+            Amount:
+            <input type="text" formControlName = "amount">
+        </label>
+
+        <div *ngIf="form.invalid && amount.value <= 200">
+            <p>Invalid value</p>
+        </div>
+
+        {{form.invalid}}
+
+        <div>
+            <button type="submit" [disabled]="form.invalid || amount.value === ''"> submit</button>
+        </div>
+
+        <div *ngIf="(amount.value > 200)">
+            <button type="submit">
+                claim 200
+            </button>
+        </div>
+
+    </form>
+
+   
+</div>
